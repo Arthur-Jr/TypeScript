@@ -64,7 +64,7 @@ function addEmployee(id: string, firstName: string, lastName: string, managers: 
 }
 
 // Desafio 07:
-function countAnimals(specieName?: string): (number | object) {
+function countAnimals(specieName?: string): (number | { [key: string]: number }) {
   if(specieName) {
     return species.find((specie) => specie.name === specieName).residents.length;
   }
@@ -76,6 +76,7 @@ function countAnimals(specieName?: string): (number | object) {
   return result;
 }
 
+// Desafio 08:
 function calculateEntry(entrants) {
   // seu código aqui
 }
