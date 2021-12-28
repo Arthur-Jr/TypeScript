@@ -59,11 +59,18 @@ function fizzBuzz(numbers: number[]): string[] {
 }
 
 // Desafio 9
-function encode() {
-  // seu código aqui
+function encode(text: string) {
+  const vogals : { [key: string]: number } = { a: 1, e: 2, i: 3, o: 4, u: 5 };
+  return text.split('')
+  .map((letter) => vogals[letter] ? vogals[letter] : letter )
+  .join('');
 }
-function decode() {
-  // seu código aqui
+
+function decode(text: string) {
+  const vogals : { [key: (string | number)]: string } = { 1: 'a', 2: 'e', 3: 'i', 4: 'o', 5: 'u' };
+  return text.split('')
+  .map((letter) => vogals[letter] ? vogals[letter] : letter )
+  .join('');
 }
 
 export {
