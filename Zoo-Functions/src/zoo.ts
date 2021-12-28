@@ -1,5 +1,5 @@
 import data from './data';
-const { species } = data;
+const { species, employees } = data;
 
 // Desafio 01:
 function getSpeciesByIds(...ids: string[]) {
@@ -17,8 +17,21 @@ function getAnimalsOlderThan(animal: string, age: number): boolean {
   .every((anim) => anim.age >= age);
 }
 
-function getEmployeeByName(employeeName) {
-  // seu código aqui
+// Desafio 03:
+interface employeeObj {
+  id: string,
+  firstName: string,
+  lastName: string,
+  managers: string[],
+  responsibleFor: string[],
+}
+
+function getEmployeeByName(employeeName?: string): (employeeObj | object) {
+  if(employeeName) {
+    return employees
+    .find(({ firstName, lastName }) => [firstName, lastName].includes(employeeName));
+  }
+  return {};
 }
 
 function createEmployee(personalInfo, associatedWith) {
