@@ -27,8 +27,9 @@ function footballPoints(wins: number, ties: number) {
 }
 
 // Desafio 6
-function highestCount() {
-  // seu código aqui
+function highestCount(colections: number[]) {
+  const highestNumber = colections.reduce((acc, cur) => (acc < cur ? cur : acc));
+  return colections.filter((item: number) => item === highestNumber).length;
 }
 
 // Desafio 7
