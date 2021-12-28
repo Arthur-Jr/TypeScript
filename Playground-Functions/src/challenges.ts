@@ -130,9 +130,17 @@ function generatePhoneNumber(numbers: number[]): string {
 }
 
 // Desafio 12
-function triangleCheck() {
-  // seu código aqui
+function triangleCheck(lineA: number, lineB: number, lineC: number): boolean {
+  const numbers = [lineA, lineB, lineC]
+  return numbers.some((value) => {
+    const others = numbers.filter((num) => value !== num);
+    const sum = others.reduce((acc, cur) => acc + cur, 0);
+    const sub = Math.abs(others.reduce((acc, cur) => acc - cur));
+    return value < sum && value > sub;
+  });
 }
+
+triangleCheck(10, 13, 2);
 
 // Desafio 13
 function hydrate() {
