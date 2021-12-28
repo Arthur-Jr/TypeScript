@@ -63,8 +63,17 @@ function addEmployee(id: string, firstName: string, lastName: string, managers: 
   employees.push({ id, firstName, lastName, managers, responsibleFor });
 }
 
-function countAnimals(species) {
-  // seu código aqui
+// Desafio 07:
+function countAnimals(specieName?: string): (number | object) {
+  if(specieName) {
+    return species.find((specie) => specie.name === specieName).residents.length;
+  }
+  const result = {};
+  species.forEach(({ name, residents }) => {
+    result[name] = residents.length;
+  });
+
+  return result;
 }
 
 function calculateEntry(entrants) {
