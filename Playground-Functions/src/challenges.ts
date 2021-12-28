@@ -73,6 +73,42 @@ function decode(text: string) {
   .join('');
 }
 
+// Desafio 10
+interface TechsReturn {
+  tech: string,
+  name: string,
+}
+
+function techList(techs: string[], name: string): (TechsReturn[] | string ) {
+  if (techs.length > 0) {
+    return techs.map((tech) => ({ tech, name }))
+    .sort((a, b) => {
+      if(a.tech > b.tech) {
+        return 1;
+      } else if (a.tech < b.tech) {
+        return -1;
+      }
+      return 0;
+    });
+  }
+  return 'Vazio!'
+}
+
+// Desafio 11
+function generatePhoneNumber() {
+  // seu código aqui
+}
+
+// Desafio 12
+function triangleCheck() {
+  // seu código aqui
+}
+
+// Desafio 13
+function hydrate() {
+  // seu código aqui
+}
+
 export {
   calcArea,
   catAndMouse,
@@ -84,4 +120,8 @@ export {
   footballPoints,
   highestCount,
   splitSentence,
+  generatePhoneNumber,
+  techList,
+  hydrate,
+  triangleCheck,
 };
