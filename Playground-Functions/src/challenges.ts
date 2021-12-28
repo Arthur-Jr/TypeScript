@@ -140,11 +140,17 @@ function triangleCheck(lineA: number, lineB: number, lineC: number): boolean {
   });
 }
 
-triangleCheck(10, 13, 2);
-
 // Desafio 13
-function hydrate() {
-  // seu código aqui
+function hydrate(text: string) {
+  const r = /\d+/g;
+  const quantity = text.match(r);
+  let result = 0;
+  if(quantity) {
+    result = quantity.map((num) => parseInt(num, 10))
+    .reduce((acc, cur) => acc + cur);
+  }
+
+  return result > 1 ? `${result} copos de água` : `${result} copo de água`;
 }
 
 export {
