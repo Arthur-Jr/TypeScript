@@ -33,8 +33,15 @@ function highestCount(colections: number[]) {
 }
 
 // Desafio 7
-function catAndMouse() {
-  // seu código aqui
+function catAndMouse(mouse: number, cat1: number, cat2: number ): string {
+  const cat1Distance = Math.abs(mouse - cat1);
+  const cat2Distance = Math.abs(mouse - cat2);
+  if(cat1Distance < cat2Distance) {
+    return 'cat1';
+  } else if(cat1Distance > cat2Distance) {
+    return 'cat2';
+  }
+  return 'os gatos trombam e o rato foge';
 }
 
 // Desafio 8
