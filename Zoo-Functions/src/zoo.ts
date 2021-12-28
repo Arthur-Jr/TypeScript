@@ -1,6 +1,7 @@
 import data from './data';
 const { species } = data;
 
+// Desafio 01:
 function getSpeciesByIds(...ids: string[]) {
   if(ids.length > 0) {
     return ids.map((id) => {
@@ -10,8 +11,10 @@ function getSpeciesByIds(...ids: string[]) {
   return [];
 }
 
-function getAnimalsOlderThan(animal, age) {
-  // seu código aqui
+// Desafio 02:
+function getAnimalsOlderThan(animal: string, age: number): boolean {
+  return species.find(({ name }) => name === animal).residents
+  .every((anim) => anim.age >= age);
 }
 
 function getEmployeeByName(employeeName) {
