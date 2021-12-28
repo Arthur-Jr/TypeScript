@@ -50,8 +50,12 @@ function createEmployee(personalInfo: employeePersonal, associatedWith: employee
   return { ...personalInfo, ...associatedWith };
 }
 
-function isManager(id) {
-  // seu código aqui
+// Desafio 05:
+function isManager(id: string): boolean {
+  const result = employees
+  .map(({ managers }) => managers.some((manager) => manager === id));
+
+  return result.some((r) => r === true);
 }
 
 function addEmployee(id, firstName, lastName, managers, responsibleFor) {
