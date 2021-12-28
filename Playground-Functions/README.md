@@ -1,4 +1,4 @@
-#Playground Functions - TypeScript
+# Playground Functions - TypeScript
 
 ## O que foi desenvolvido
 
