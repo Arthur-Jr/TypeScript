@@ -1,6 +1,8 @@
+#Playground Functions - TypeScript
+
 ## O que foi desenvolvido
 
-Implementei funções a partir de requisitos para práticar lógica de programação.
+Implementei funções a partir de requisitos para práticar lógica de programação com TypeScript.
 
 ---
 
