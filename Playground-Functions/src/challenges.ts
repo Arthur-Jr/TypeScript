@@ -45,8 +45,17 @@ function catAndMouse(mouse: number, cat1: number, cat2: number ): string {
 }
 
 // Desafio 8
-function fizzBuzz() {
-  // seu código aqui
+function fizzBuzz(numbers: number[]): string[] {
+  return numbers.map((value) => {
+    if(value % 3 === 0 && value % 5 === 0) {
+      return 'fizzBuzz';
+    } else if (value % 3 === 0) {
+      return 'fizz';
+    } else if (value % 5 === 0) {
+      return 'buzz';
+    }
+    return 'bug!';
+  });
 }
 
 // Desafio 9
