@@ -58,8 +58,9 @@ function isManager(id: string): boolean {
   return result.some((r) => r === true);
 }
 
-function addEmployee(id, firstName, lastName, managers, responsibleFor) {
-  // seu código aqui
+// Desafio 06:
+function addEmployee(id: string, firstName: string, lastName: string, managers: string[] = [], responsibleFor: string[] = []) {
+  employees.push({ id, firstName, lastName, managers, responsibleFor });
 }
 
 function countAnimals(species) {
