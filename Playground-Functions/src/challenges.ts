@@ -91,12 +91,42 @@ function techList(techs: string[], name: string): (TechsReturn[] | string ) {
       return 0;
     });
   }
-  return 'Vazio!'
+  return 'Vazio!';
 }
 
 // Desafio 11
-function generatePhoneNumber() {
-  // seu código aqui
+function checkNumbers(numbers: number[]) : boolean {
+  const repeat = numbers.reduce((acc, cur) => {
+    const repeatCount = numbers.filter((num) => num === cur).length;
+    if(repeatCount >= 3) {
+      return acc + repeatCount;
+    }
+    return acc;
+  }, 0);
+
+  if(numbers.some((num) => num < 0 || num > 9) || repeat >= 3) {
+    return true;
+  }
+  return false;
+}
+
+function generatePhoneNumber(numbers: number[]): string {
+  if(numbers.length !== 11) {
+    return 'Array com tamanho incorreto.';
+  } else if(checkNumbers(numbers)) {
+    return 'não é possível gerar um número de telefone com esses valores.';
+  }
+
+  return numbers.map((num, index) => {
+    if(index === 0) {
+      return `(${num}`;
+    } else if(index === 1) {
+      return `${num}) `;
+    } else if(index === 6) {
+      return `${num}-`
+    }
+    return num;
+  }).join('');
 }
 
 // Desafio 12
