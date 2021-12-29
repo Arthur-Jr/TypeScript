@@ -1,5 +1,5 @@
 import data from './data';
-const { species, employees } = data;
+const { species, employees, prices } = data;
 
 interface employeeObj {
   id: string,
@@ -18,6 +18,12 @@ interface employeePersonal {
 interface employeeWork {
   managers: string[],
   responsibleFor: string[],
+}
+
+interface entrantsParam {
+  Adult?: number,
+  Senior?: number,
+  Child?: number,
 }
 
 // Desafio 01:
@@ -77,10 +83,19 @@ function countAnimals(specieName?: string): (number | { [key: string]: number })
 }
 
 // Desafio 08:
-function calculateEntry(entrants) {
-  // seu código aqui
+function calculateEntry(entrants?: entrantsParam): number {
+  if(entrants) {
+    const { Adult: adultPrice, Senior: seniorPrice, Child: childPrice } = prices;
+    const { Adult, Senior, Child } = entrants;
+    const adultValue = Adult ? (Adult * adultPrice) : 0;
+    const seniorValue = Senior ? (Senior * seniorPrice) : 0;
+    const childValue = Child ? (Child * childPrice) : 0;
+    return (adultValue + seniorValue + childValue);
+  }
+  return 0;
 }
 
+// Desafio 09:
 function getAnimalMap(options) {
   // seu código aqui
 }
