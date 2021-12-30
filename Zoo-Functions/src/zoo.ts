@@ -193,11 +193,6 @@ function increasePrices(percentage: number): void {
   Object.assign(prices, result);
 }
 
-// Desafio 13:
-function getEmployeeCoverage(idOrName) {
-  // seu código aqui
-}
-
 export {
   calculateEntry,
   getSchedule,
@@ -205,7 +200,6 @@ export {
   getAnimalMap,
   getSpeciesByIds,
   getEmployeeByName,
-  getEmployeeCoverage,
   addEmployee,
   isManager,
   getAnimalsOlderThan,
