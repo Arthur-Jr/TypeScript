@@ -1,5 +1,6 @@
+import { NumericLiteral } from '@babel/types';
 import data from './data';
-const { species, employees, prices } = data;
+const { species, employees, prices, hours } = data;
 
 interface employeeObj {
   id: string,
@@ -159,9 +160,19 @@ function getAnimalMap(options?: optionsI): objOfArray {
   return getSpecifiedAnimalMap(options);
 }
 
-function getSchedule(dayName) {
-  // seu código aqui
+// Desafio 10:
+function setDaySchedule() {
+  return Object.entries(hours).reduce((acc: { [key:string]: string }, day) => {
+    const [dayName, { open, close }] = day;
+    acc[dayName] = open === 0 ? 'CLOSED' : `Open from ${open}am until ${close - 12}pm`;
+    return acc;
+  }, {});
 }
+
+function getSchedule(dayName?: string): { [key:string]: string } {
+  return dayName ? { [dayName]: setDaySchedule()[dayName] } : setDaySchedule();
+}
+
 
 function getOldestFromFirstSpecies(id) {
   // seu código aqui
