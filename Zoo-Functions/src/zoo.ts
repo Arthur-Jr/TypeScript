@@ -96,8 +96,67 @@ function calculateEntry(entrants?: entrantsParam): number {
 }
 
 // Desafio 09:
-function getAnimalMap(options) {
-  // seu código aqui
+const MAPS = ['NE', 'NW', 'SE', 'SW'];
+
+interface optionsI {
+  includeNames?: boolean,
+  sex?: string,
+  sorted?: boolean,
+}
+
+interface objOfArray {
+  [key: string]: (string[] | { [key:string]: string[] }[]),
+}
+
+function getSpecieNameByMap(map: string) {
+  return species.filter(({ location }) => map === location);
+}
+
+function getAllSpecieMap(): objOfArray  {
+  return MAPS.reduce((acc: objOfArray, map): objOfArray => {
+    acc[map] = getSpecieNameByMap(map).map(({ name }) => name);
+    return acc;
+  }, {});
+}
+
+function getResidentsNameByMap(map: string, sorted: boolean) {
+  return getSpecieNameByMap(map)
+  .reduce((acc: { [key:string]: string[] }[], { name, residents }) => {
+    const result = residents.map(({ name }) => name);
+    sorted && result.sort();
+
+    acc.push({ [name]: result });
+    return acc
+  }, []);
+}
+
+function getResidentsNameBySex(map: string, animalSex: string, sorted: boolean) {
+  return getSpecieNameByMap(map)
+  .reduce((acc: { [key:string]: string[] }[], { name, residents }) => {
+    const result = residents.filter(({ sex }) => sex === animalSex)
+    .map(({ name }) => name);
+    sorted && result.sort();
+
+    acc.push({ [name]: result });
+    return acc
+  }, []);
+}
+
+function getSpecifiedAnimalMap(options: optionsI): objOfArray {
+  const { sex, sorted } = options;
+  
+  return MAPS.reduce((acc: objOfArray, map): objOfArray => {
+    acc[map] = sex ? getResidentsNameBySex(map, sex, sorted) : getResidentsNameByMap(map, sorted);
+    return acc;
+  }, {});
+}
+
+function getAnimalMap(options?: optionsI): objOfArray {
+  if(!options || !options.includeNames) {
+    return getAllSpecieMap();
+  }
+
+  return getSpecifiedAnimalMap(options);
 }
 
 function getSchedule(dayName) {
