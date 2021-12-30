@@ -1,3 +1,3 @@
 # Projetos com TypeScript
 
-Projetos para praticar e aprender TypeScript
+Projetos para praticar e aprender TypeScript.
