@@ -173,7 +173,7 @@ function getSchedule(dayName?: string): { [key:string]: string } {
 }
 
 // Desafio 11:
-function getOldestFromFirstSpecies(id: string) {
+function getOldestFromFirstSpecies(id: string): string[] {
   const firstSpecieId = employees.find((employee) => id === employee.id).responsibleFor[0];
   return species.find((specie) => specie.id === firstSpecieId)
   .residents.reduce((acc, cur): (string | number)[]  => {
@@ -182,10 +182,18 @@ function getOldestFromFirstSpecies(id: string) {
   }, []);
 }
 
-function increasePrices(percentage) {
-  // seu código aqui
+// Desafio 12:
+function increasePrices(percentage: number): void {
+  const result = Object.entries(prices).reduce((acc: { [key: string]: number }, cur) => {
+    const [category, price] = cur;
+    acc[category] = Math.round((price + (price * percentage) / 100) * 100) / 100;
+    return acc;
+  }, {});
+  
+  Object.assign(prices, result);
 }
 
+// Desafio 13:
 function getEmployeeCoverage(idOrName) {
   // seu código aqui
 }
