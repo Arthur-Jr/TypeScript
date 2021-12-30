@@ -1,4 +1,3 @@
-import { NumericLiteral } from '@babel/types';
 import data from './data';
 const { species, employees, prices, hours } = data;
 
@@ -173,9 +172,14 @@ function getSchedule(dayName?: string): { [key:string]: string } {
   return dayName ? { [dayName]: setDaySchedule()[dayName] } : setDaySchedule();
 }
 
-
-function getOldestFromFirstSpecies(id) {
-  // seu código aqui
+// Desafio 11:
+function getOldestFromFirstSpecies(id: string) {
+  const firstSpecieId = employees.find((employee) => id === employee.id).responsibleFor[0];
+  return species.find((specie) => specie.id === firstSpecieId)
+  .residents.reduce((acc, cur): (string | number)[]  => {
+    const curArray = Object.values(cur);
+    return acc[2] > curArray[2] ? acc : curArray;
+  }, []);
 }
 
 function increasePrices(percentage) {
